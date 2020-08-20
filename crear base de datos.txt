@@ -1,0 +1,30 @@
+create database Motel;
+
+
+ create table cliente(
+ idcliente int primary key not null,
+ nombrecliente varchar(20),
+ apellidocliente varchar(20),
+ direccion varchar(20),
+ edad int,
+ genero varchar(20)
+ );
+
+ create table habitacion(
+ numerohabitacion int not null primary key,
+ estado varchar(20),
+ observacion varchar(20),
+ precio varchar(10)
+ );
+
+ create table reserva(
+ idhospedaje int not null primary key,
+ fechallegada varchar(20),
+ fechasalida varchar(20),
+ clienteid int not null,
+ habitacionid int not null,
+ CONSTRAINT cliente_fk FOREIGN KEY (clienteid)
+      REFERENCES cliente (idcliente) MATCH SIMPLE,
+ CONSTRAINT habitacion_fk FOREIGN KEY (habitacionid)
+      REFERENCES habitacion (numerohabitacion) MATCH SIMPLE
+ );

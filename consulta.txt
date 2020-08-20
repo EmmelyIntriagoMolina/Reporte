@@ -1,0 +1,14 @@
+SELECT
+     cliente."nombrecliente" AS cliente_nombrecliente,
+     cliente."apellidocliente" AS cliente_apellidocliente,
+     habitacion."estado" AS habitacion_estado,
+     habitacion."precio" AS habitacion_precio,
+     reserva."fechallegada" AS reserva_fechallegada,
+     reserva."fechasalida" AS reserva_fechasalida,
+     habitacion."numerohabitacion" AS habitacion_numerohabitacion,
+     cliente."idcliente" AS cliente_idcliente,
+     cliente."edad" AS cliente_edad,
+     cliente."genero" AS cliente_genero
+FROM
+     "public"."cliente" cliente INNER JOIN "public"."reserva" reserva ON cliente."idcliente" = reserva."clienteid"
+     INNER JOIN "public"."habitacion" habitacion ON reserva."habitacionid" = habitacion."numerohabitacion"
